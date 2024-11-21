@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Document } from '../document.model';
-import { DocumentItemComponent } from '../document-item/document-item.component';
 
 @Component({
   selector: 'cms-document-list',
@@ -8,7 +7,40 @@ import { DocumentItemComponent } from '../document-item/document-item.component'
   styleUrl: './document-list.component.css'
 })
 export class DocumentListComponent {
+  @Output() selectedDocumentEvent = new EventEmitter<Document>();
+  
   documents: Document[] = [
-    // documents go here 
+    new Document(
+      '01',
+      'Rusty',
+      'a red haired poodle',
+      'url',
+      []
+    ),
+    new Document(
+      '02',
+      'Roxie',
+      'a gray haired chihuahua',
+      'url',
+      []
+    ),
+    new Document(
+      '03',
+      'Rosie',
+      'another red toy poodle',
+      'url',
+      []
+    ),
+    new Document(
+      '04',
+      'Raspberry',
+      'the cutest poodle puppy',
+      'url',
+      []
+    )
   ];
+
+  onSelectedDocument(document: Document) {
+    this.selectedDocumentEvent.emit(document);
+  }
 }

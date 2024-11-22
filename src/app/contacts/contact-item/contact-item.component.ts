@@ -11,7 +11,7 @@ export class ContactItemComponent {
   @Input() index: number;
 
   constructor() {
-    this.contact = new Contact(0, '', '', 0, '', []);
+    this.contact = new Contact('0', '', '', '0000000000', '', []);
     this.index = 0;
   }
 }

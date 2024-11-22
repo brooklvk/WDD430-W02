@@ -6,7 +6,7 @@ import { MOCKCONTACTS } from './MOCKCONTACTS';
   providedIn: 'root'
 })
 export class ContactService {
-  public contacts: Contact[] = [];
+  contacts: Contact[] = [];
 
   constructor() { 
     this.contacts = MOCKCONTACTS;

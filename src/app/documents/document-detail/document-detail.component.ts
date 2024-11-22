@@ -7,5 +7,5 @@ import { Document } from '../document.model';
   styleUrl: './document-detail.component.css'
 })
 export class DocumentDetailComponent {
-  @Input() document!: Document;
+  @Input() document: Document | null = null;
 }

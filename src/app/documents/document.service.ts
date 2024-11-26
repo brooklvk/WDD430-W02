@@ -19,13 +19,13 @@ export class DocumentService {
     return this.documents;
   }
 
-  getDocument(id:string): Document | null {
+  getDocument(id: string): Document {
     // find id that matches from the list of docs
     for (const document of this.documents) {
       if (document.id == id)
         return document;
     }
-    return null;
+    throw new Error(`Document with id ${id} not found`); // Throw an error if not found
   }
   
 }

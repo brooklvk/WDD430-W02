@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -9,12 +9,6 @@ import { AuthService } from '../auth/auth.service';
 
 export class HeaderComponent {
   constructor( private authService: AuthService) {}
-
-  @Output() selectedFeatureEvent = new EventEmitter<string>();
-
-  onSelected(selectedEvent: string) {
-    this.selectedFeatureEvent.emit(selectedEvent);
-  }
 
   onLogout() {
     // this.authService.logout();

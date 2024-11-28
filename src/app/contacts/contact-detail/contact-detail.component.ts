@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Contact } from '../contact.model';
+import { ContactService } from '../contact.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'cms-contact-detail',
@@ -7,10 +9,22 @@ import { Contact } from '../contact.model';
   styleUrl: './contact-detail.component.css'
 })
 
-export class ContactDetailComponent {
+export class ContactDetailComponent implements OnInit {
   @Input() contact: Contact;
+  route: ActivatedRoute;
+  contactService: ContactService;
 
-  constructor() {
+  constructor(contactService: ContactService, router: Router, route: ActivatedRoute) {
     this.contact = null!;
+    this.route = route;
+    this.contactService = contactService;
+  }
+
+  ngOnInit() {
+    // Subscribe to the active route to get the id parameter
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      this.contact = this.contactService.getContact(id); // Fetch the contact using the id
+    });
   }
 }

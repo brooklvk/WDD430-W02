@@ -11,12 +11,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class ContactDetailComponent implements OnInit {
   @Input() contact: Contact;
+  router: Router;
   route: ActivatedRoute;
   contactService: ContactService;
 
   constructor(contactService: ContactService, router: Router, route: ActivatedRoute) {
     this.contact = null!;
     this.route = route;
+    this.router = router;
     this.contactService = contactService;
   }
 
@@ -26,5 +28,10 @@ export class ContactDetailComponent implements OnInit {
       const id = params['id'];
       this.contact = this.contactService.getContact(id); // Fetch the contact using the id
     });
+  }
+
+  onDelete() {
+    this.contactService.deleteContact(this.contact); 
+    this.router.navigate(['/contacts']);
   }
 }

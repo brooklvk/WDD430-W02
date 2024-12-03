@@ -7,7 +7,7 @@ import { DocumentService } from './document.service';
   templateUrl: './documents.component.html',
   styleUrl: './documents.component.css'
 })
-export class DocumentsComponent {
+export class DocumentsComponent implements OnInit {
   selectedDocument!: Document;
 
   constructor(public documentService: DocumentService) {}
